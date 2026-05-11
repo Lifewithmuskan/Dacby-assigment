@@ -17,6 +17,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+    bookmarks: [
+
+    {
+      title: String,
+      url: String,
+      author: String,
+      points: String,
+      postedAt: String,
+    }
+
+  ],
 
 });
 
