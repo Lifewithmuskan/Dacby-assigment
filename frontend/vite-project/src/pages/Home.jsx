@@ -31,7 +31,10 @@ function Home() {
         <div className="card"
           key={story._id}
         >
-          <h2>{story.title}</h2>
+           <a href={story.url} target="_blank">
+            <h2 className="title">{story.title}</h2>
+          </a>
+         
 
           <p>
             <strong>Author:</strong> {story.author}
