@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Nav from "./Nav";
 import "./Login.css";
 function Login() {
@@ -29,20 +29,17 @@ function Login() {
 
       );
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify(response.data.user)
+   localStorage.setItem(
+  "user",
+  JSON.stringify(response.data.user)
 
-      );
-
+);
       alert("Login Successful");
       navigate("/");
 
     } catch(error){
-      console.log(error);
-      alert(
-        error.response.data.message
-      );
+       error.response?.data?.message ||
+  "Login Failed"
 
     } finally {
       setLoading(false);
@@ -93,6 +90,15 @@ function Login() {
             }
 
           </button>
+          <p className="signup-text">
+         Don't have an account?
+        <Link
+            to="/signup"
+            className="signup-link"
+        >Sign Up
+        </Link>
+
+        </p>
         </form>
       </div>
 

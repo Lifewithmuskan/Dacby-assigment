@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import "./Signup.css";
 import {Link,useNavigate} from "react-router-dom";
 function Signup() {
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,7 +37,7 @@ function Signup() {
 
       console.log(response.data);
 
-      localStorage.setItem(
+localStorage.setItem(
   "user",
   JSON.stringify(response.data.user)
 );
@@ -46,9 +46,12 @@ navigate("/");
 
     } catch (error) {
 
-      console.log(error.response.data);
+    console.log(error);
 
-      alert("Signup Failed");
+alert(
+  error.response?.data?.message ||
+  "Signup Failed"
+);
 
     } finally {
 
