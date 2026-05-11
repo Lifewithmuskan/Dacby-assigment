@@ -1,7 +1,10 @@
 import React from "react";
+import News from "./News.jsx";
 import "./Nav.css";
+import { Link } from "react-router-dom";
 
-function Nav({ fetchStories }) {
+
+function Nav({ fetchStories,loading}) {
   return (
     <nav className="navbar">
 
@@ -12,15 +15,23 @@ function Nav({ fetchStories }) {
       <div className="nav-links">
         <a href="/">Home</a>
         <a href="/bookmarks">Bookmarks</a>
+        <Link to="/news">
+            News
+            </Link>
       </div>
 
       <div className="nav-buttons">
 
-        <button
-          className="fetch-btn"
-          onClick={fetchStories}
+            <button
+        className="fetch"
+        onClick={fetchStories}
+        disabled={loading}
         >
-          Fetch New
+
+        {loading
+            ? "Loading..."
+            : "Fetch New"}
+
         </button>
 
         <button className="login-btn">

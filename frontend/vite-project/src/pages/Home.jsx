@@ -4,40 +4,88 @@ import "./Home.css"
 import Nav from "./Nav";
 function Home() {
   const [stories, setStories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
+  const fetchStories = async () => {
+
+  try {
+    setLoading(true);
+    const response = await axios.get(
+      "http://localhost:5000/api/stories"
+    );
+        await new Promise((resolve) =>
+      setTimeout(resolve, 2000)
+    );
+
+    setStories(response.data);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};
   useEffect(() => {
     fetchStories();
   }, []);
 
-  const fetchStories = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5000/api/stories"
-      );
+  // const fetchStories = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "http://localhost:5000/api/stories"
+  //     );
 
-      setStories(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     setStories(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
+//    const fetchAllStories = async () => {
+
+//   try {
+
+//     const response = await axios.get(
+//       "http://localhost:5000/api/allstories"
+//     );
+
+//     setStories(response.data);
+
+//   } catch (error) {
+
+//     console.log(error);
+
+//   }
+
+// };
   return (
     <>
-     <Nav fetchStories={fetchStories} />
+     <Nav
+      fetchStories={fetchStories}
+      loading={loading}
+    />
      <div className="heading"><h1>Top Stories</h1>
      <p>lastest and tranding</p>
      <h3>Discover the most intersting stories from around the web</h3> </div>
-    <div className="container">
+       {
+      loading && (
+        <h2 className="loading">
+          Loading latest stories...
+        </h2>
+      )
+    } 
+ { !loading && (
      
+    <div className="container">
+
       
 
       {stories.map((story) => (
         <div className="card"
           key={story._id}
-        >
-           <a href={story.url} target="_blank">
+        > <a href={story.url} target="_blank">
             <h2 className="title">{story.title}</h2>
           </a>
+          
          
         <div className="info">
           <p>
@@ -63,7 +111,7 @@ function Home() {
         
         </div>
       ))}
-    </div>
+    </div>)}
     </>
   );
 }
