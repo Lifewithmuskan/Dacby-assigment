@@ -128,14 +128,18 @@ npm run dev
 
 # 📸 Screenshots
 
+
 ## Home Page
-![alt text](image.png)
+
+<img width="958" height="473" alt="image" src="https://github.com/user-attachments/assets/811ad33e-4da1-4eb3-b031-34cf2528045b" />
 
 ## Login Page
-![alt text](image-1.png)
+<img width="959" height="476" alt="image-1" src="https://github.com/user-attachments/assets/2350fd72-9aa9-4eb1-8e43-a5b7a9d55193" />
+
 
 ## Bookmark Page
-![alt text](image-2.png)
+<img width="957" height="472" alt="image-2" src="https://github.com/user-attachments/assets/0bff452d-23d9-4a80-b1c9-3f570ba52930" />
+
 
 ---
 
