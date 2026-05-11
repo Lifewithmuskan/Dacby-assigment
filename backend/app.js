@@ -6,7 +6,7 @@ import scrapeStories from "./scraper/scrapeStories.js";
 import Story from "./models/Story.js";
 import bcrypt from "bcryptjs";
 import User from "./models/User.js";
-
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 connectDB();
@@ -63,10 +63,36 @@ app.post("/api/signup", async (req, res) => {
       password: hashedPassword,
 
     });
-    res.status(201).json({
-      message: "Signup successful",
-      user,
-    });
+    const token = jwt.sign(
+
+        {
+            id: user._id
+        },
+
+        process.env.JWT_SECRET,
+
+        {
+            expiresIn: "7d"
+        }
+
+        );
+   res.status(201).json({
+
+  message: "Signup successful",
+
+  token,
+
+  user: {
+
+    id: user._id,
+
+    name: user.name,
+
+    email: user.email
+
+  }
+
+});
 
   } catch(error){
     console.log(error);
@@ -77,6 +103,7 @@ app.post("/api/signup", async (req, res) => {
   }
 
 });
+
 
 app.post("/api/login", async (req, res) => {
   try {
@@ -104,10 +131,36 @@ app.post("/api/login", async (req, res) => {
       });
 
     }
-    res.status(200).json({
-      message: "Login successful",
-      user,
-    });
+    const token = jwt.sign(
+
+  {
+    id: user._id
+  },
+
+  process.env.JWT_SECRET,
+
+  {
+    expiresIn: "7d"
+  }
+
+);
+  res.status(200).json({
+
+  message: "Login successful",
+
+  token,
+
+  user: {
+
+    id: user._id,
+
+    name: user.name,
+
+    email: user.email
+
+  }
+
+});
   } catch(error){
     console.log(error);
     res.status(500).json({
