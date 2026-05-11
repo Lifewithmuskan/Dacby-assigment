@@ -7,7 +7,7 @@ A modern full-stack news aggregation web application built using React, Node.js,
 # 🚀 Live Demo
 
 ## Frontend
-https://your-vercel-link.vercel.app
+[https://your-vercel-link.vercel.app](https://dacby-assigment.vercel.app/)
 
 ## Backend API
 https://dacby-assigment.onrender.com
