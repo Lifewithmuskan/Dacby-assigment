@@ -7,6 +7,7 @@ import Story from "./models/Story.js";
 import bcrypt from "bcryptjs";
 import User from "./models/User.js";
 
+
 dotenv.config();
 connectDB();
 
@@ -46,8 +47,6 @@ app.post("/api/signup", async (req, res) => {
       email,
       password
     } = req.body;
-
-    
     const existingUser =
       await User.findOne({ email });
     if(existingUser){
@@ -56,7 +55,6 @@ app.post("/api/signup", async (req, res) => {
       });
 
     }
-
     const hashedPassword =
       await bcrypt.hash(password, 10);
     const user = await User.create({
@@ -65,12 +63,51 @@ app.post("/api/signup", async (req, res) => {
       password: hashedPassword,
 
     });
-
     res.status(201).json({
       message: "Signup successful",
       user,
     });
 
+  } catch(error){
+    console.log(error);
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
+
+});
+
+app.post("/api/login", async (req, res) => {
+  try {
+    const {
+      email,
+      password
+    } = req.body;
+    const user = await User.findOne({
+      email
+    });
+    if(!user){
+      return res.status(400).json({
+        message: "User not found"
+      });
+
+    }
+    const isMatch =
+      await bcrypt.compare(
+        password,
+        user.password
+      );
+    if(!isMatch){
+      return res.status(400).json({
+        message: "Invalid password"
+      });
+
+    }
+    res.status(200).json({
+      message: "Login successful",
+      user,
+    });
   } catch(error){
     console.log(error);
     res.status(500).json({
