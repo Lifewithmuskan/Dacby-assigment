@@ -1,15 +1,30 @@
 import React from "react";
-import News from "./News.jsx";
 import "./Nav.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 
-const user = JSON.parse(
-  localStorage.getItem("user")
-);
+
+
 
 function Nav({ fetchStories,loading}) {
-  return (
+ const user = JSON.parse(
+    localStorage.getItem("user")
+  );
+
+  const navigate = useNavigate();
+
+ const handleLogout = () => {
+
+  localStorage.removeItem("user");
+
+  navigate("/");
+
+  window.location.reload();
+
+};
+
+return (
+    
     <nav className="navbar">
 
       <div className="logo">
@@ -18,36 +33,54 @@ function Nav({ fetchStories,loading}) {
 
       <div className="nav-links">
         <a href="/">Home</a>
-        <a href="/bookmarks">Bookmarks</a>
+    <Link to="/bookmarks">
+    Bookmarks
+    </Link>
         <Link to="/news">
             News
             </Link>
       </div>
-
+     
       <div className="nav-buttons">
-
-    
-          
+              
 
         {
           user ? (
-     <>       
+     <>    
+          
          <div className="welcome-user">
 
               Welcome, {user.name}
-             
+            
             </div>
-     
+
+            <button
+        className="login-btn"
+        onClick={handleLogout}
+        >
+        Log out
+        </button>
+        <button
+        className="fetch"
+        onClick={fetchStories}
+        disabled={loading}
+        >
+
+        {loading
+            ? "Loading..."
+            : "Fetch New"}
+
+        </button>  
          </>
        
             
           ) : (
 
             <>
-              <button className="login-btn">
+              <button  >
               <Link
                 to="/login"
-                className="login-btn"
+               
               >
                 Login
               </Link>
@@ -61,20 +94,7 @@ function Nav({ fetchStories,loading}) {
                 Sign Up
               </Link>
        </button>
-            </>
-
-          )
-        }
-        
-       <button >
-              <Link
-                to="/login"
-              >
-                Login
-              </Link>
-             </button>
-      
-               <button
+             <button
         className="fetch"
         onClick={fetchStories}
         disabled={loading}
@@ -85,6 +105,14 @@ function Nav({ fetchStories,loading}) {
             : "Fetch New"}
 
         </button>
+            </>
+
+          )
+        }
+        
+    
+      
+         
         
       
       </div>
