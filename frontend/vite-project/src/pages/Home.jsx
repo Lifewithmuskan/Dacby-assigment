@@ -145,7 +145,7 @@ function Home() {
     handleBookmark(story)
   }
 >
-  🔖 Bookmark
+  🔰
 </button>
         </div>
       ))}
