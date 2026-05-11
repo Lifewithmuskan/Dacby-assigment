@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Nav from "./Nav";
 import "./Signup.css";
-
+import {Link,useNavigate} from "react-router-dom";
 function Signup() {
 
   const [formData, setFormData] = useState({
@@ -115,6 +115,18 @@ navigate("/");
             }
 
           </button>
+                    <p className="login-text">
+
+            Already have an account?
+
+            <Link
+                to="/login"
+                className="login-link"
+            >
+                Login
+            </Link>
+
+            </p>
 
         </form>
 

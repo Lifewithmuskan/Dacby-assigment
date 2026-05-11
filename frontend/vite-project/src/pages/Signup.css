@@ -107,3 +107,33 @@
 
   cursor: not-allowed;
 }
+
+.login-text{
+
+  text-align: center;
+
+  color: rgba(255,255,255,0.7);
+
+  margin-top: 10px;
+
+  font-size: 15px;
+}
+
+.login-link{
+
+  margin-left: 8px;
+
+  color: #67e8f9;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.login-link:hover{
+
+  color: white;
+
+}
