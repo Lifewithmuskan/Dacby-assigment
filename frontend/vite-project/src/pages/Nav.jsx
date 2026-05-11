@@ -4,6 +4,10 @@ import "./Nav.css";
 import { Link } from "react-router-dom";
 
 
+const user = JSON.parse(
+  localStorage.getItem("user")
+);
+
 function Nav({ fetchStories,loading}) {
   return (
     <nav className="navbar">
@@ -22,7 +26,55 @@ function Nav({ fetchStories,loading}) {
 
       <div className="nav-buttons">
 
-            <button
+    
+          
+
+        {
+          user ? (
+     <>       
+         <div className="welcome-user">
+
+              Welcome, {user.name}
+             
+            </div>
+     
+         </>
+       
+            
+          ) : (
+
+            <>
+              <button className="login-btn">
+              <Link
+                to="/login"
+                className="login-btn"
+              >
+                Login
+              </Link>
+             </button>
+
+            <button className="signup-btn">
+              <Link
+                to="/signup"
+                className="signup-btn"
+              >
+                Sign Up
+              </Link>
+       </button>
+            </>
+
+          )
+        }
+        
+       <button >
+              <Link
+                to="/login"
+              >
+                Login
+              </Link>
+             </button>
+      
+               <button
         className="fetch"
         onClick={fetchStories}
         disabled={loading}
@@ -33,15 +85,8 @@ function Nav({ fetchStories,loading}) {
             : "Fetch New"}
 
         </button>
-
-        <button className="login-btn">
-          Login
-        </button>
-
-        <button className="signup-btn">
-          Sign Up
-        </button>
-
+        
+      
       </div>
 
     </nav>

@@ -50,12 +50,12 @@
   transition: 0.3s;
 }
 
-.fetch-btn{
+.fetch{
   background: cyan;
   color: black;
 }
 
-.fetch-btn:hover{
+.fetch:hover{
   transform: scale(1.05);
 }
 
