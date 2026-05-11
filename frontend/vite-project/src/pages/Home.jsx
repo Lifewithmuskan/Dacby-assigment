@@ -1,16 +1,6 @@
-// function Home() {
-//   return (
-//     <div>
-//       <h1>Top Stories</h1>
-//     </div>
-//   );
-// }
-
-// export default Home;
-
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import "./Home.css"
 function Home() {
   const [stories, setStories] = useState([]);
 
@@ -31,17 +21,15 @@ function Home() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Top 10 Stories</h1>
+    <>
+     <div className="heading"><h1>Top 10 Stories</h1></div>
+    <div className="container">
+     
+      
 
       {stories.map((story) => (
-        <div
+        <div className="card"
           key={story._id}
-          style={{
-            border: "1px solid gray",
-            marginBottom: "15px",
-            padding: "15px",
-          }}
         >
           <h2>{story.title}</h2>
 
@@ -63,6 +51,7 @@ function Home() {
         </div>
       ))}
     </div>
+    </>
   );
 }
 
