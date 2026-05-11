@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Home.css"
+import Nav from "./Nav";
 function Home() {
   const [stories, setStories] = useState([]);
 
@@ -22,7 +23,10 @@ function Home() {
 
   return (
     <>
-     <div className="heading"><h1>Top 10 Stories</h1></div>
+     <Nav fetchStories={fetchStories} />
+     <div className="heading"><h1>Top Stories</h1>
+     <p>lastest and tranding</p>
+     <h3>Discover the most intersting stories from around the web</h3> </div>
     <div className="container">
      
       
