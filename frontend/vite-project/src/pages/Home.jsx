@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Home.css"
 import Nav from "./Nav";
 function Home() {
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const fetchStories = async () => {
 
@@ -28,6 +30,35 @@ function Home() {
     fetchStories();
   }, []);
 
+  const handleBookmark = async (story) => {
+  const user = JSON.parse(
+    localStorage.getItem("user")
+  );
+  if(!user){
+   navigate("/signup");
+    return;
+  }
+
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/api/bookmark",
+      {
+        email: user.email,
+        story,
+      }
+    );
+    alert(response.data.message);
+
+  } catch(error){
+    console.log(error);
+
+    alert(
+      error.response.data.message
+    );
+
+  }
+
+};
   // const fetchStories = async () => {
   //   try {
   //     const response = await axios.get(
@@ -108,7 +139,14 @@ function Home() {
     >
       Read More →
     </a>
-        
+        <button
+  className="bookmark-btn"
+  onClick={() =>
+    handleBookmark(story)
+  }
+>
+  🔖 Bookmark
+</button>
         </div>
       ))}
     </div>)}

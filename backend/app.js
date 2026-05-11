@@ -159,6 +159,28 @@ app.post("/api/bookmark", async (req, res) => {
   }
 
 });
+
+app.get("/api/bookmarks/:email", async (req, res) => {
+
+  try {
+ const user = await User.findOne({
+      email: req.params.email
+    });
+    if(!user){
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+    res.status(200).json(
+      user.bookmarks
+    );
+  } catch(error){
+    console.log(error);
+    res.status(500).json({
+      message: error.message
+    });
+  }
+});
 const PORT=process.env.PORT|| "5000";
 app.listen(PORT,async()=>{
  console.log(`server running on Port ${PORT}`)

@@ -33,9 +33,35 @@ return (
 
       <div className="nav-links">
         <a href="/">Home</a>
-    <Link to="/bookmarks">
-    Bookmarks
-    </Link>
+
+        <Link
+        to={user ? "/bookmarks" : "/signup"}
+        >
+        Bookmarks
+        </Link>
+
+        {/* <div
+        
+        onClick={() => {
+
+            const user = JSON.parse(
+            localStorage.getItem("user")
+            );
+
+            if(user){
+
+            navigate("/bookmarks");
+
+            } else {
+
+            navigate("/signup");
+
+            }
+
+        }}
+        >
+        Bookmarks
+        </div> */}
         <Link to="/news">
             News
             </Link>

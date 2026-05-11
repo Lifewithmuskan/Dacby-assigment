@@ -1,0 +1,57 @@
+.bookmark-heading{
+  text-align: center;
+
+  margin: 40px 0;
+
+  color: white;
+}
+
+.bookmark-heading h1{
+  font-size: 48px;
+}
+
+.bookmark-container{
+  width: 100%;
+
+  padding: 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(320px,1fr));
+
+  gap: 20px;
+}
+
+.bookmark-card{
+  background: rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 20px;
+
+  padding: 25px;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  transition: 0.3s;
+}
+
+.bookmark-card:hover{
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 0 20px rgba(6,182,212,0.3);
+}
+
+.bookmark-card h2{
+  color: white;
+
+  margin-bottom: 15px;
+}
+
+.bookmark-card p{
+  color: rgba(255,255,255,0.8);
+
+  margin-top: 10px;
+}
