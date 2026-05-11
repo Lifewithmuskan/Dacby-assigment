@@ -31,7 +31,7 @@ function Signup() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/signup",
+        "https://dacby-assigment.onrender.com/api/signup",
         formData
       );
 

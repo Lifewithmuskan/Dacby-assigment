@@ -30,7 +30,7 @@ function Bookmarks() {
 
       const response = await axios.get(
 
-        `http://localhost:5000/api/bookmarks/${user.email}`
+        `https://dacby-assigment.onrender.com/api/bookmarks/${user.email}`
 
       );
 

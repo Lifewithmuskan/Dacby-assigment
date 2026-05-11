@@ -20,7 +20,7 @@ function News() {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/api/allstories"
+        "https://dacby-assigment.onrender.com/api/allstories"
       );
 
       setStories(response.data);

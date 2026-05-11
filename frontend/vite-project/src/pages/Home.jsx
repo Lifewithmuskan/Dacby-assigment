@@ -13,7 +13,7 @@ function Home() {
   try {
     setLoading(true);
     const response = await axios.get(
-      "http://localhost:5000/api/stories"
+      "https://dacby-assigment.onrender.com/api/stories"
     );
         await new Promise((resolve) =>
       setTimeout(resolve, 2000)
@@ -41,7 +41,7 @@ function Home() {
 
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/bookmark",
+      "https://dacby-assigment.onrender.com/api/bookmark",
       {
         email: user.email,
         story,
