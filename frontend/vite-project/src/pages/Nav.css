@@ -10,13 +10,14 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  flex-wrap: nowrap;
 }
 
 .logo{
   font-size: 28px;
   font-weight: bold;
   color: white;
-  font-family:'Courier New', Courier, monospace;
+  font-family:'fangsong';
 }
 
 .nav-links{
@@ -67,4 +68,36 @@
 .signup-btn{
   background: white;
   color: black;
+}
+@media (max-width: 768px){
+
+  .navbar{
+    padding: 15px 20px;
+  }
+
+      .logo {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 7px;
+        margin-right: 30px;}
+
+  .nav-links{
+    gap: 12px;
+    margin-right: 4px;
+  }
+
+  .nav-links a{
+    font-size: 10px;
+  }
+
+  .nav-buttons{
+    gap: 8px;
+  }
+
+  .nav-buttons button{
+    padding: 8px 12px;
+
+    font-size: 9px;
+  }
+
 }

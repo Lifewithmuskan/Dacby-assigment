@@ -39,22 +39,28 @@ function Home() {
             <h2 className="title">{story.title}</h2>
           </a>
          
-
+        <div className="info">
           <p>
-            <strong>Author:</strong> {story.author}
+            <strong className="label">Author:</strong> {story.author}
           </p>
 
           <p>
-            <strong>Points:</strong> {story.points}
+            <strong  className="label">Points:</strong> {story.points}
           </p>
 
           <p>
-            <strong>Posted:</strong> {story.postedAt}
+            <strong  className="label">Posted:</strong> {story.postedAt}
           </p>
-
-          <a href={story.url} target="_blank">
-            Read More
-          </a>
+          </div>
+          <a
+      href={story.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="read"
+    >
+      Read More →
+    </a>
+        
         </div>
       ))}
     </div>

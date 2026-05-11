@@ -21,18 +21,17 @@ color: aliceblue;
 }
 
 .heading h1{
-  font-size: 56px;
+  font-size: clamp(36px, 8vw, 56px);
   font-weight: 800;
   letter-spacing: 2px;
-  background: linear-gradient(to right, #67e8f9, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  
 }
 
 .heading p{
   margin-top: 5px;
   color: #67e8f9;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: clamp(14px, 3vw, 20px);
   text-transform: uppercase;
   letter-spacing: 3px;
 }
@@ -60,8 +59,10 @@ color: aliceblue;
   width: 100%;
   padding: 30px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 20px;
+  padding: 20px;
 }
 
 .card{
@@ -88,7 +89,7 @@ color: aliceblue;
   font-size: 28px;
   color:#d6dcfa;
   line-height: 1.2; 
-  text-align: center;
+  overflow: hidden;
 }
 a{
     text-decoration: none;
@@ -96,4 +97,16 @@ a{
 .title:hover{
     color: rgb(156, 203, 244);
     font-size: 30px;
+}
+.info{
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.read{
+    margin: 20px;
+    color: #67e8f9;
 }
