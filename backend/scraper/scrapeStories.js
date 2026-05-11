@@ -12,7 +12,7 @@ const scrapeStories = async () => {
     const stories = [];
 
     data(".athing").each((index, element) => {
-      if (index < 10) {
+      
         const title = data(element)
           .find(".titleline a")
           .text();
@@ -33,7 +33,7 @@ const scrapeStories = async () => {
           author,
           postedAt,
         });
-      }
+      
     });
 
     await Story.insertMany(stories);
